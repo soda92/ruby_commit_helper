@@ -10,7 +10,19 @@ def get_changed_files():
 
 
 def check(file):
-    print(subprocess.getoutput(f"rubocop {file}"))
+    r = subprocess.getoutput(f"rubocop {file}")
+    r = r.replace("offense", "configured linter message")
+    r = r.replace("Offense", "configured linter message")
+    r = r.replace(
+        """Inspecting 1 file
+C
+""",
+        "",
+    )
+    lines = r.split("\n")
+    lines = lines[3:-3]
+    s = "\n".join(lines)
+    print(s)
 
 
 def check_style():
