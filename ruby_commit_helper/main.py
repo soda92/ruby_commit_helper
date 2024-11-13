@@ -1,4 +1,5 @@
 import re
+from colorama import Fore, Style
 import subprocess
 
 
@@ -25,7 +26,23 @@ C
     s = s.replace(
         "C: Layout/EndOfLine: Carriage return character detected.", "Not a problem"
     )
-    print(s)
+
+    s2 = s.split("\n")
+    s3 = []
+
+    for line in s2:
+        if line.endswith("Not a problem"):
+            continue
+        if line.startswith("# frozen_string_literal: true ..."):
+            continue
+        s3.append(line)
+
+    s = "\n".join(s3).strip()
+    if s == "":
+        print(Fore.GREEN + "No problem found")
+    else:
+        print(s)
+    print(Style.RESET_ALL)
 
 
 def check_style():
