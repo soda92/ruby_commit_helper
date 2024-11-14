@@ -35,6 +35,8 @@ C
             continue
         if line.startswith("# frozen_string_literal: true ..."):
             continue
+        if line.strip().startswith("^^^^^^"):
+            continue
         s3.append(line)
 
     s = "\n".join(s3).strip()
