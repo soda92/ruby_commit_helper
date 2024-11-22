@@ -1,13 +1,19 @@
 import re
-from colorama import Fore, Style
+from rich import print
 import subprocess
 
 
 def get_changed_files():
     output = subprocess.getoutput("git status")
     files = re.findall(r"modified: *(.*)", output)
-    print(files)
+    files.extend(re.findall(r"new file: *(.*)", output))
+    files_str = " ".join(files)
+    print(f"files: [#af0087]{files_str}[/]")
     return files
+
+
+def warning_print(s):
+    print(s)
 
 
 def check(file):
@@ -29,6 +35,7 @@ C
 
     s2 = s.split("\n")
     s3 = []
+    status = 0
 
     for line in s2:
         if line.endswith("Not a problem"):
@@ -41,15 +48,21 @@ C
 
     s = "\n".join(s3).strip()
     if s == "":
-        print(Fore.GREEN + "No problem found")
+        pass
+        # print(Fore.GREEN + "No problem found")
     else:
-        print(s)
-    print(Style.RESET_ALL)
+        warning_print(s)
+        status = 1
+
+    return status
 
 
 def check_style():
+    status = 0
     for file in get_changed_files():
-        check(file)
+        status += check(file)
+
+    exit(status)
 
 
 def main():
