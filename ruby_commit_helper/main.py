@@ -3,7 +3,7 @@ from rich import print
 import subprocess
 
 
-def get_changed_files():
+def get_changed_files() -> list[str]:
     output = subprocess.getoutput("git status")
     files = re.findall(r"modified: *(.*)", output)
     files.extend(re.findall(r"new file: *(.*)", output))
@@ -60,7 +60,8 @@ C
 def check_style():
     status = 0
     for file in get_changed_files():
-        status += check(file)
+        if file.endswith(".rb"):
+            status += check(file)
 
     exit(status)
 
