@@ -1,5 +1,5 @@
 import re
-from rich import print
+import rich
 import subprocess
 
 
@@ -8,12 +8,16 @@ def get_changed_files() -> list[str]:
     files = re.findall(r"modified: *(.*)", output)
     files.extend(re.findall(r"new file: *(.*)", output))
     files_str = " ".join(files)
-    print(f"files: [#af0087]{files_str}[/]")
+    rich.print(f"files: [#af0087]{files_str}[/]")
     return files
 
 
 def warning_print(s):
-    print(s)
+    for line in s.split("\n"):
+        try:
+            rich.print(line)
+        except Exception as e:
+            print(line)
 
 
 def check(file):
