@@ -1,6 +1,6 @@
 [project]
 name = "ruby-commit-helper"
-version = "2025.4.3.0"
+version = "2025.4.3.1"
 description = "No more \"offend\" for your ruby commit!"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -22,4 +22,4 @@ ignore-vcs = true
 packages = ["ruby_commit_helper"]
 
 [project.scripts]
-ruby-commit-helper = "ruby_commit_helper.main:main"
+ruby-commit-helper = "ruby_commit_helper.main:check_style"
