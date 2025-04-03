@@ -16,7 +16,7 @@ def warning_print(s):
     for line in s.split("\n"):
         try:
             rich.print(line)
-        except Exception as e:
+        except Exception as _:
             print(line)
 
 
