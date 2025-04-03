@@ -1,3 +1,3 @@
-from ruby_commit_helper.main import main
+from ruby_commit_helper.main import check_style
 
-main()
+check_style()

@@ -68,11 +68,3 @@ def check_style():
             status += check(file)
 
     exit(status)
-
-
-def main():
-    check_style()
-
-
-if __name__ == "__main__":
-    main()

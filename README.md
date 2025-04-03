@@ -1,5 +1,7 @@
 # ruby_commit_helper
 
+No more "offend" for your ruby commit!
+
 Install
 ```bash
 pip install ruby-commit-helper
@@ -12,8 +14,8 @@ ruby-commit-helper
 
 ## BEFORE
 
-![alt text](image-1.png)
+<img src="https://raw.githubusercontent.com/soda92/ruby_commit_helper/refs/heads/main/image-1.png" alt="demo" style="width:400px;"/>
 
 ## AFTER
 
-![alt text](image.png)
+<img src="https://raw.githubusercontent.com/soda92/ruby_commit_helper/refs/heads/main/image.png" alt="demo" style="width:400px;"/>
